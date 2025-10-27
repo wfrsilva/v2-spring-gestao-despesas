@@ -61,7 +61,7 @@ Connection: close
   "data": "2025-06-11",
   "valor": 15,
   "categoria": "refeição",
-  "email": "wfrsilva@gmail.com",
+  "email": "v2@gmail.com",
   "data_criacao": "2025-10-27"
 }
 ```
@@ -80,11 +80,41 @@ SELECT * FROM DESPESA
 
 | ID                                   | CATEGORIA | DATA       | DATA_CRIACAO | DESCRICAO         | EMAIL              | VALOR |
 |-------------------------------------|------------|-------------|---------------|-------------------|--------------------|--------|
-| bf8549bf-a98e-4992-9c7a-693cdf09b0c7 | refeição   | 2025-06-09  | 2025-10-27    | Almoço de Segunda | wfrsilva@gmail.com | 45.00 |
-| 4b070b84-d371-481d-b1d3-0d17c990766b | refeição   | 2025-06-10  | 2025-10-27    | Almoço de Terça   | wfrsilva@gmail.com | 30.00 |
-| 87d0ab95-e14d-408d-8d37-585161e1cd02 | refeição   | 2025-06-11  | 2025-10-27    | Cafe de Quarta    | wfrsilva@gmail.com | 15.00 |
+| bf8549bf-a98e-4992-9c7a-693cdf09b0c7 | refeição   | 2025-06-09  | 2025-10-27    | Almoço de Segunda | v2@gmail.com | 45.00 |
+| 4b070b84-d371-481d-b1d3-0d17c990766b | refeição   | 2025-06-10  | 2025-10-27    | Almoço de Terça   | v2@gmail.com | 30.00 |
+| 87d0ab95-e14d-408d-8d37-585161e1cd02 | refeição   | 2025-06-11  | 2025-10-27    | Cafe de Quarta    | v2@gmail.com | 15.00 |
 
 *(3 rows, 4 ms)*
 
 ---
 
+# http://localhost:8080/gestao/v2@gmail.com
+
+para diferenciar, mudei no h2 de v2 para v2
+mudei o post.http tambem
+
+
+**Requisição POST (via `post.http`)**
+```http
+POST http://localhost:8080/gestao/create
+Content-Type: application/json
+
+{
+  "categoria": "refeição",
+  "data": "2025-06-09",
+  "descricao": "Almoço de Segunda",
+  "email": "v2@gmail.com",
+  "valor": 45.00
+}
+
+(...)
+
+```
+
+| ID                                   | CATEGORIA | DATA       | DATA_CRIACAO | DESCRICAO         | EMAIL              | VALOR |
+|-------------------------------------|------------|-------------|---------------|-------------------|--------------------|--------|
+| bf8549bf-a98e-4992-9c7a-693cdf09b0c7 | refeição   | 2025-06-09  | 2025-10-27    | Almoço de Segunda | **v2@gmail.com** | 45.00 |
+| 4b070b84-d371-481d-b1d3-0d17c990766b | refeição   | 2025-06-10  | 2025-10-27    | Almoço de Terça   | **v2@gmail.com** | 30.00 |
+| 87d0ab95-e14d-408d-8d37-585161e1cd02 | refeição   | 2025-06-11  | 2025-10-27    | Cafe de Quarta    | **v2@gmail.com** | 15.00 |
+
+*(3 rows, 4 ms)*

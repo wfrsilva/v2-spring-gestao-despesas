@@ -5,7 +5,7 @@ Content-Type: application/json
   "descricao": "Almoço de Segunda",
   "valor":45,
   "categoria":"refeição",
-  "email":"wfrsilva@gmail.com",
+  "email":"v2@gmail.com",
   "data":"2025-06-09"
 }
 
@@ -19,7 +19,7 @@ Content-Type: application/json
   "descricao": "Almoço de Terça",
   "valor":30,
   "categoria":"refeição",
-  "email":"wfrsilva@gmail.com",
+  "email":"v2@gmail.com",
   "data":"2025-06-10"
 }
 
@@ -32,11 +32,11 @@ Content-Type: application/json
   "descricao": "Cafe de Quarta",
   "valor":15,
   "categoria":"refeição",
-  "email":"wfrsilva@gmail.com",
+  "email":"v2@gmail.com",
   "data":"2025-06-11"
 }
 
 
 ### verificar se post OK
 
-GET http://localhost:8080/gestao/wfrsilva@gmail.com
+GET http://localhost:8080/gestao/v2@gmail.com
