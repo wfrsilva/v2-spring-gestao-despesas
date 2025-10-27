@@ -46,9 +46,45 @@ Abaixo estão as correções realizadas até a aplicação voltar a funcionar e 
 **Figura 1 – Requisição POST bem-sucedida (`/gestao/create`)**
 
 > Mostrando retorno `200 OK` e corpo com os dados persistidos.
+<img width="1767" height="768" alt="image" src="https://github.com/user-attachments/assets/d363bf2f-7ffb-4130-8bbd-ed42be53f713" />
+
+```
+HTTP/1.1 200 
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Mon, 27 Oct 2025 23:06:38 GMT
+Connection: close
+
+{
+  "id": "87d0ab95-e14d-408d-8d37-585161e1cd02",
+  "descricao": "Cafe de Quarta",
+  "data": "2025-06-11",
+  "valor": 15,
+  "categoria": "refeição",
+  "email": "wfrsilva@gmail.com",
+  "data_criacao": "2025-10-27"
+}
+```
 
 **Figura 2 – Console H2 após inserção**
 
+
+http://localhost:8080/h2-console/login.do?jsessionid=7ea3a7012efd8db733e3d5ff9861892c
+
+```sql
+SELECT * FROM DESPESA 
+```
+
 > Mostrando a tabela `DESPESA` criada e os registros armazenados.
+<img width="1104" height="526" alt="image" src="https://github.com/user-attachments/assets/f37893b6-eecf-4110-a07d-a8f18ad2f71d" />
+
+| ID                                   | CATEGORIA | DATA       | DATA_CRIACAO | DESCRICAO         | EMAIL              | VALOR |
+|-------------------------------------|------------|-------------|---------------|-------------------|--------------------|--------|
+| bf8549bf-a98e-4992-9c7a-693cdf09b0c7 | refeição   | 2025-06-09  | 2025-10-27    | Almoço de Segunda | wfrsilva@gmail.com | 45.00 |
+| 4b070b84-d371-481d-b1d3-0d17c990766b | refeição   | 2025-06-10  | 2025-10-27    | Almoço de Terça   | wfrsilva@gmail.com | 30.00 |
+| 87d0ab95-e14d-408d-8d37-585161e1cd02 | refeição   | 2025-06-11  | 2025-10-27    | Cafe de Quarta    | wfrsilva@gmail.com | 15.00 |
+
+*(3 rows, 4 ms)*
 
 ---
+
