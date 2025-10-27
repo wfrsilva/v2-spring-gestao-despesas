@@ -110,6 +110,7 @@ Content-Type: application/json
 (...)
 
 ```
+http://localhost:8080/h2-console/login.do?jsessionid=7ea3a7012efd8db733e3d5ff9861892c
 
 | ID                                   | CATEGORIA | DATA       | DATA_CRIACAO | DESCRICAO         | EMAIL              | VALOR |
 |-------------------------------------|------------|-------------|---------------|-------------------|--------------------|--------|
@@ -117,4 +118,47 @@ Content-Type: application/json
 | 4b070b84-d371-481d-b1d3-0d17c990766b | refeição   | 2025-06-10  | 2025-10-27    | Almoço de Terça   | **v2@gmail.com** | 30.00 |
 | 87d0ab95-e14d-408d-8d37-585161e1cd02 | refeição   | 2025-06-11  | 2025-10-27    | Cafe de Quarta    | **v2@gmail.com** | 15.00 |
 
+
 *(3 rows, 4 ms)*
+
+
+<img width="1097" height="477" alt="image" src="https://github.com/user-attachments/assets/d8ff88de-50e1-48b2-a731-2928e8aee5be" />
+
+
+http://localhost:8080/gestao/v2@gmail.com
+
+<img width="555" height="737" alt="image" src="https://github.com/user-attachments/assets/fc87dea8-55fb-470d-b715-2c72be1ce888" />
+
+```json
+[
+  {
+    "id": "bf8549bf-a98e-4992-9c7a-693cdf09b0c7",
+    "descricao": "Almoço de Segunda",
+    "data": "2025-06-09",
+    "valor": 45,
+    "categoria": "refeição",
+    "email": "v2@gmail.com",
+    "data_criacao": "2025-10-27"
+  },
+  {
+    "id": "4b070b84-d371-481d-b1d3-0d17c990766b",
+    "descricao": "Almoço de Terça",
+    "data": "2025-06-10",
+    "valor": 30,
+    "categoria": "refeição",
+    "email": "v2@gmail.com",
+    "data_criacao": "2025-10-27"
+  },
+  {
+    "id": "87d0ab95-e14d-408d-8d37-585161e1cd02",
+    "descricao": "Cafe de Quarta",
+    "data": "2025-06-11",
+    "valor": 15,
+    "categoria": "refeição",
+    "email": "v2@gmail.com",
+    "data_criacao": "2025-10-27"
+  }
+]
+```
+
+
