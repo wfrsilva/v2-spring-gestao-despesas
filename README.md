@@ -14,50 +14,41 @@ https://www.youtube.com/watch?v=0V8OKTYNeU8
 
 https://github.com/danileao/javadevweek
 
-### Criando a primeira classe Controller
-[38:15 - Primeira Controller](https://youtu.be/0V8OKTYNeU8?t=2295)
 
-```java
+# Post Funcionando
 
- package dev.wfrsilva.gestao_despesas;
+## 🔧 Correções aplicadas na Versão 2
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+Durante a reimplementação do projeto a partir do README da versão 1, o Spring Boot não iniciava corretamente.  
+Abaixo estão as correções realizadas até a aplicação voltar a funcionar e o endpoint POST responder com sucesso.
 
-@RestController
-@RequestMapping("/v2")
-public class PrimeiraController {
+### 🧩 Ajustes de código e configuração
 
-    @GetMapping("/codorna")
-    public String helloCoturnix()
-    {
-        //http://localhost:8080/v2/codorna
-        return "Olá Codornas!";
-    }//helloCoturnix
-    
-}//PrimeiraController
+| Arquivo | Problema encontrado | Solução aplicada |
+|----------|--------------------|------------------|
+| **GestaoDespesaController.java** | Falta de `;` após criação de `ErrorMessage` | Adicionado ponto e vírgula |
+| **CadastroDespesaUseCase.java** | Imports ausentes impedindo injeção de dependência | Incluídos imports corretos e anotação `@Service` |
+| **DespesaRepository.java** | Import incorreto de `Pageable` (`SpringDataWebProperties.Pageable`) | Corrigido para `org.springframework.data.domain.Pageable` |
+| **application.properties** | Erros de digitação nas chaves (`dll-auto` e `driveClassName`) | Corrigido para `spring.jpa.hibernate.ddl-auto` e `spring.datasource.driverClassName` |
+| **Banco H2** | Arquivo criado vazio (sem tabela `despesa`) | Removido `data/gestao-despesa.mv.db` e recriado após correção das configs |
 
+### 🚀 Resultado
 
-```
-
-#### Comando para rodar no WSL
-
-wendel@​wfrsilva.dev:~/cursosSpring/gestao-despesas$ `chmod +x mvnw`
-
-
-wendel@​wfrsilva.dev:~/cursosSpring/gestao-despesas$ `./mvnw spring-boot:run`
-
-
-(...)
-
-
-http://localhost:8080/v2/codorna
-
-<img width="354" height="95" alt="image" src="https://github.com/user-attachments/assets/334a9fcc-bf21-4fbf-af15-af91602b1562" />
-
+- Aplicação inicia normalmente (`Tomcat started on port 8080`)
+- Endpoint `POST /gestao/create` funcionando (dados sendo persistidos)
+- Console H2 acessível em: `http://localhost:8080/h2-console`
+- Tabela `DESPESA` criada automaticamente pelo Hibernate
 
 ---
 
+### 📸 Prints de funcionamento
 
+**Figura 1 – Requisição POST bem-sucedida (`/gestao/create`)**
 
+> Mostrando retorno `200 OK` e corpo com os dados persistidos.
+
+**Figura 2 – Console H2 após inserção**
+
+> Mostrando a tabela `DESPESA` criada e os registros armazenados.
+
+---
