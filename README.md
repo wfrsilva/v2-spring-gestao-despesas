@@ -358,6 +358,65 @@ Tempo (sem paginação): 2159 ms
 ```
 
 
+# http://localhost:8080/gestao/performance/com-paginacao?page=1&size=10
+
+<img width="949" height="976" alt="image" src="https://github.com/user-attachments/assets/322a7020-db8b-4d58-8bcd-c8233bb9dce8" />
+
+
+```json
+
+(...)
+
+
+
+    {
+      "id": "a74642f4-1332-43f4-9cc1-180531b48f5b",
+      "descricao": "Gasto nº: 15",
+      "data": "2025-10-14",
+      "valor": 25,
+      "categoria": "TESTE V2",
+      "email": "v2-performance@gmail.com",
+      "data_criacao": "2025-10-29"
+    },
+    {
+      "id": "16187afb-3ede-449d-9271-d215f136c517",
+      "descricao": "Gasto nº: 16",
+      "data": "2025-10-13",
+      "valor": 26,
+      "categoria": "TESTE V2",
+      "email": "v2-performance@gmail.com",
+      "data_criacao": "2025-10-29"
+    }
+  ],
+  "pageable": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "sort": {
+      "sorted": false,
+      "unsorted": true,
+      "empty": true
+    },
+    "offset": 10,
+    "paged": true,
+    "unpaged": false
+  },
+  "totalPages": 15001,
+  "totalElements": 150004,
+  "last": false,
+  "size": 10,
+  "number": 1,
+  "sort": {
+    "sorted": false,
+    "unsorted": true,
+    "empty": true
+  },
+  "first": false,
+  "numberOfElements": 10,
+  "empty": false
+}
+```
+
+
 ---
 
 ---
