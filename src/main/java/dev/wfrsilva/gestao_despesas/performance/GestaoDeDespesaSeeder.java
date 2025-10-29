@@ -38,7 +38,7 @@ public class GestaoDeDespesaSeeder implements CommandLineRunner {
         }//for
 
         despesaRepository.saveAll(despesas);
-        System.out.println("Finalizou geraçãod e seed");
+        System.out.println("Finalizou geração de seed");
 
     }//run
 
