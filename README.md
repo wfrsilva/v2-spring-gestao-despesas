@@ -566,8 +566,77 @@ public class GestaoDespesaPerformance {
 }
 ```
 
+# http://localhost:8080/gestao/performance/cache/v2-performance@gmail.com?page=0&size=10
+
+```java
+(...)
+
+public class GestaoDespesaPerformance {
+
+(...)
+@Cacheable(value = "gastosPorEmailCache" , key = "#email + '-' + #pageable.pageNumber + '-' + #pageable.pageSize + '-'")
+    @GetMapping("/cache/{email}")
+    public ResponseEntity <Page <Despesa>> cacheComPaginacao(@PathVariable String email, Pageable pageable)
+    {
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+
+        var despesas = repository.findByEmail(email, pageable);
+        stopWatch.stop();
+
+        System.out.println("Tempo (com paginação): " + stopWatch.getTotalTimeMillis() + " ms");
+        return ResponseEntity.ok(despesas);
+        
+    }//cacheComPaginacao
+    
+}//GestaoDespesaPerformance
+```
+
+<img width="975" height="985" alt="image" src="https://github.com/user-attachments/assets/fab66420-c667-4c98-8ba9-623907214cbd" />
+
+```json
+(...)
+{
+      "id": "c574c4c0-dd1b-457d-b129-b13533b873a5",
+      "descricao": "Gasto nº: 9",
+      "data": "2025-10-20",
+      "valor": 19,
+      "categoria": "TESTE V2",
+      "email": "v2-performance@gmail.com",
+      "data_criacao": "2025-10-29"
+    }
+  ],
+  "pageable": {
+    "pageNumber": 0,
+    "pageSize": 10,
+    "sort": {
+      "sorted": false,
+      "unsorted": true,
+      "empty": true
+    },
+    "offset": 0,
+    "paged": true,
+    "unpaged": false
+  },
+  "totalPages": 15001,
+  "totalElements": 150001,
+  "last": false,
+  "size": 10,
+  "number": 0,
+  "sort": {
+    "sorted": false,
+    "unsorted": true,
+    "empty": true
+  },
+  "first": true,
+  "numberOfElements": 10,
+  "empty": false
+}
+
+```
 
 ---
 
 ---
+
 
