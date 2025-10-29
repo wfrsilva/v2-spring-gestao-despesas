@@ -4,6 +4,8 @@ Spring Boot - Backend Gestao de Despesas V2- Professora Daniele Leão
 
 Realizando o projeto pela segunda vez, com algumas pequenas alteracoes
 
+V1 - https://github.com/wfrsilva/spring-gestao-despesas
+
 
 ## CURSO DE SPRING BOOT | JAVA - Do Absoluto ZERO ao DEPLOY! - Daniele Leão #Java #Spring #SpringBoot
 
