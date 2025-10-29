@@ -187,5 +187,92 @@ http://localhost:8080/h2-console/login.do?jsessionid=e431910b18a55878db8a63c3312
 <img width="711" height="414" alt="image" src="https://github.com/user-attachments/assets/c1bbeb01-e18f-4401-b178-919f7f0a9796" />
 
 
+## Sem paginacao
+
+```java
+package dev.wfrsilva.gestao_despesas.performance;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import dev.wfrsilva.gestao_despesas.entity.Despesa;
+import dev.wfrsilva.gestao_despesas.repository.DespesaRepository;
+
+@RequestMapping("/gestao/performance")
+@RestController
+@EnableCaching    
+public class GestaoDespesaPerformance {
+    
+    @Autowired
+    DespesaRepository repository;
+
+
+    @GetMapping("/sem-paginacao")
+    public ResponseEntity < List <Despesa>> listarSemPaginacao()
+    {
+        long inicio = System.currentTimeMillis();
+        var despesas = repository.findAll();
+
+        long fim = System.currentTimeMillis();
+        System.out.println("Tempo (sem paginação): " + (fim - inicio) + " ms");
+        return ResponseEntity.ok(despesas);
+    }//listarSemPaginacao
+
+    
+}//GestaoDespesaPerformance
+```
+
+### WSL sem paginacao
+
+
+<img width="1898" height="396" alt="image" src="https://github.com/user-attachments/assets/99fe9ded-123b-4f9f-b4c1-9632cad2abe1" />
+
+```
+2025-10-29T19:32:47.720-03:00  INFO 76850 --- [Gestao de Despesas Pessoais V2] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-10-29T19:32:47.726-03:00  INFO 76850 --- [Gestao de Despesas Pessoais V2] [  restartedMain] .w.g.GestaoDeDespesasPessoaisApplication : Started GestaoDeDespesasPessoaisApplication in 0.601 seconds (process running for 1075.46)
+Iniciando geração de seed
+Finalizou geração de seed
+2025-10-29T19:33:06.925-03:00  INFO 76850 --- [Gestao de Despesas Pessoais V2] [  restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+```
+
+
+### http://localhost:8080/gestao/performance/sem-paginacao
+
+muitas requisicoes
+
+SELECT count(*) FROM DESPESA;
+COUNT(*)  
+1200011
+(1 row, 1 ms)
+
+<img width="736" height="320" alt="image" src="https://github.com/user-attachments/assets/4a5d1557-b16e-4892-a988-4725033746c1" />
+
+
+precisei zerar o banco via **application.properties**
+
+spring.jpa.hibernate.ddl-auto=create
+
+```
+spring.application.name=Gestao de Despesas Pessoais V2
+
+# ===== CONFIGURACOES H2 ======
+spring.datasource.url=jdbc:h2:file:./data/gestao-despesa
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+# spring.jpa.hibernate.ddl-auto=update
+spring.jpa.hibernate.ddl-auto=create
+```
+
+
+
 ---
+
 ---
