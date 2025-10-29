@@ -22,7 +22,7 @@ public class GestaoDeDespesaSeeder implements CommandLineRunner {
     public void run(String ... args) throws Exception
     {
         List <Despesa> despesas = new ArrayList<>();
-        System.out.println("Iniciando geracao de seed");
+        System.out.println("Iniciando geração de seed");
 
         for (int i =0; i <=150000; i++)
         {
