@@ -163,3 +163,29 @@ http://localhost:8080/gestao/v2@gmail.com
 
 
 
+# Gerando Seeds
+```
+2025-10-29T19:15:36.284-03:00  INFO 76850 --- [Gestao de Despesas Pessoais V2] [  restartedMain] .w.g.GestaoDeDespesasPessoaisApplication : Started GestaoDeDespesasPessoaisApplication in 0.491 seconds (process running for 44.017)
+Iniciando geracao de seed
+Finalizou geração de seed
+2025-10-29T19:15:45.353-03:00  INFO 76850 --- [Gestao de Despesas Pessoais V2] [  restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+```
+
+<img width="1914" height="196" alt="image" src="https://github.com/user-attachments/assets/b40c4422-e47a-4901-99c0-f76ecce18bd0" />
+
+http://localhost:8080/h2-console/login.do?jsessionid=e431910b18a55878db8a63c33129476e
+
+## SELECT count(*) FROM DESPESA
+
+
+| COUNT(*) | 
+|----------|
+| 300005 |
+
+(1 row, 3 ms)
+
+<img width="711" height="414" alt="image" src="https://github.com/user-attachments/assets/c1bbeb01-e18f-4401-b178-919f7f0a9796" />
+
+
+---
+---
