@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.Pageable;
-
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -64,5 +64,20 @@ public class GestaoDespesaPerformance {
         System.out.println("Tempo (com paginação): " + stopWatch.getTotalTimeMillis() + " ms");
         return ResponseEntity.ok(despesas);
     }//listarComPaginacao
+
+    @Cacheable(value = "gastosPorEmailCache" , key = "#email + '-' + #pageable.pageNumber + '-' + #pageable.pageSize + '-'")
+    @GetMapping("/cache/{email}")
+    public ResponseEntity <Page <Despesa>> cacheComPaginacao(@PathVariable String email, Pageable pageable)
+    {
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+
+        var despesas = repository.findByEmail(email, pageable);
+        stopWatch.stop();
+
+        System.out.println("Tempo (com paginação): " + stopWatch.getTotalTimeMillis() + " ms");
+        return ResponseEntity.ok(despesas);
+        
+    }//cacheComPaginacao
     
 }//GestaoDespesaPerformance
