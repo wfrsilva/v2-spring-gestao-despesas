@@ -417,6 +417,157 @@ Tempo (sem paginação): 2159 ms
 ```
 
 
+# http://localhost:8080/gestao/performance/com-paginacao/v2-performance@gmail.com?page=0&size=10
+
+```
+(...)
+public class GestaoDespesaPerformance {
+
+(...)
+
+@GetMapping("/com-paginacao/{email}")
+    public ResponseEntity <Page <Despesa>> listarComPaginacao(@PathVariable String email, Pageable pageable)
+    {
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+
+        var despesas = repository.findByEmail(email, pageable);
+        stopWatch.stop();
+
+        System.out.println("Tempo (com paginação): " + stopWatch.getTotalTimeMillis() + " ms");
+        return ResponseEntity.ok(despesas);
+    }//listarComPaginacao
+    
+}//GestaoDespesaPerformance
+
+```
+<img width="874" height="983" alt="image" src="https://github.com/user-attachments/assets/08818b29-ade7-4b7f-93c5-37373c7f1c5f" />
+
+
+```json
+{
+  "content": [
+    {
+      "id": "083ada16-d9ad-4f87-b83b-ecac9d3c8866",
+      "descricao": "Gasto nº: 0",
+      "data": "2025-10-29",
+      "valor": 10,
+      "categoria": "TESTE V2",
+      "email": "v2-performance@gmail.com",
+      "data_criacao": "2025-10-29"
+    },
+    {
+      "id": "2a0aaab9-0b63-42de-b4a9-be1a37a435b4",
+      "descricao": "Gasto nº: 1",
+      "data": "2025-10-28",
+      "valor": 11,
+      "categoria": "TESTE V2",
+      "email": "v2-performance@gmail.com",
+      "data_criacao": "2025-10-29"
+    },
+    {
+      "id": "3d5a3c13-e058-475b-b7b1-1806ca404f31",
+      "descricao": "Gasto nº: 2",
+      "data": "2025-10-27",
+      "valor": 12,
+      "categoria": "TESTE V2",
+      "email": "v2-performance@gmail.com",
+      "data_criacao": "2025-10-29"
+    },
+    {
+      "id": "e75fa87a-5351-43dc-a5b8-c0436a25b752",
+      "descricao": "Gasto nº: 3",
+      "data": "2025-10-26",
+      "valor": 13,
+      "categoria": "TESTE V2",
+      "email": "v2-performance@gmail.com",
+      "data_criacao": "2025-10-29"
+    },
+    {
+      "id": "ecde8f94-e4c4-4276-8cbb-23bfbc325e20",
+      "descricao": "Gasto nº: 4",
+      "data": "2025-10-25",
+      "valor": 14,
+      "categoria": "TESTE V2",
+      "email": "v2-performance@gmail.com",
+      "data_criacao": "2025-10-29"
+    },
+    {
+      "id": "d16fcc39-e7a1-4534-b8a0-aa67a9131fcf",
+      "descricao": "Gasto nº: 5",
+      "data": "2025-10-24",
+      "valor": 15,
+      "categoria": "TESTE V2",
+      "email": "v2-performance@gmail.com",
+      "data_criacao": "2025-10-29"
+    },
+    {
+      "id": "b8f90144-2794-4216-9fd0-cfce21c5cc1f",
+      "descricao": "Gasto nº: 6",
+      "data": "2025-10-23",
+      "valor": 16,
+      "categoria": "TESTE V2",
+      "email": "v2-performance@gmail.com",
+      "data_criacao": "2025-10-29"
+    },
+    {
+      "id": "8e298a7a-a901-46dc-9395-b3d1a12c5e6b",
+      "descricao": "Gasto nº: 7",
+      "data": "2025-10-22",
+      "valor": 17,
+      "categoria": "TESTE V2",
+      "email": "v2-performance@gmail.com",
+      "data_criacao": "2025-10-29"
+    },
+    {
+      "id": "8c856863-3f2a-407d-85c2-9501d0e48dbc",
+      "descricao": "Gasto nº: 8",
+      "data": "2025-10-21",
+      "valor": 18,
+      "categoria": "TESTE V2",
+      "email": "v2-performance@gmail.com",
+      "data_criacao": "2025-10-29"
+    },
+    {
+      "id": "c574c4c0-dd1b-457d-b129-b13533b873a5",
+      "descricao": "Gasto nº: 9",
+      "data": "2025-10-20",
+      "valor": 19,
+      "categoria": "TESTE V2",
+      "email": "v2-performance@gmail.com",
+      "data_criacao": "2025-10-29"
+    }
+  ],
+  "pageable": {
+    "pageNumber": 0,
+    "pageSize": 10,
+    "sort": {
+      "sorted": false,
+      "unsorted": true,
+      "empty": true
+    },
+    "offset": 0,
+    "paged": true,
+    "unpaged": false
+  },
+  "totalPages": 15001,
+  "totalElements": 150001,
+  "last": false,
+  "size": 10,
+  "number": 0,
+  "sort": {
+    "sorted": false,
+    "unsorted": true,
+    "empty": true
+  },
+  "first": true,
+  "numberOfElements": 10,
+  "empty": false
+}
+```
+
+
 ---
 
 ---
+
