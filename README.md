@@ -272,7 +272,21 @@ spring.jpa.hibernate.ddl-auto=create
 ```
 
 
+# http://localhost:8080/gestao/performance/sem-paginacao
+
+<img width="1898" height="189" alt="image" src="https://github.com/user-attachments/assets/f6faf53d-7200-4392-9d90-62aa49a3a9f7" />
+
+```
+2025-10-29T19:47:48.734-03:00  INFO 76850 --- [Gestao de Despesas Pessoais V2] [nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-29T19:47:48.735-03:00  INFO 76850 --- [Gestao de Despesas Pessoais V2] [nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+Tempo (sem paginação): 2159 ms
+```
+
+<img width="1868" height="771" alt="image" src="https://github.com/user-attachments/assets/2bf47485-cb20-4fcf-a4df-f8670920fd19" />
+
+
 
 ---
 
 ---
+
